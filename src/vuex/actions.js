@@ -1,5 +1,23 @@
 export const actions = {
+	bindingNewTodo({dispatch},todo){
+		dispatch('BINDINGNEWTODO',todo);
+	},
 	addTodo({dispatch},todo){
 		dispatch('ADDTODO',todo);
+	},
+	updateTodos({dispatch},todos){
+		dispatch('UPDATETODOS',todos);
+	},
+	removeTodo({dispatch},todo){
+		dispatch('REMOVETODO',todo);
+	},
+	setRemain({dispatch},remain){
+		dispatch('SETREMAIN',remain);
+	},
+	setCompleted({dispatch},index,todo){
+		dispatch('SETCOMPLETED',index,todo);
+	},
+	clearTodos({dispatch},todos){
+		dispatch('CLEARTODOS',todos);
 	}
 }

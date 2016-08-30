@@ -6,22 +6,42 @@ Vue.use(Vuex);
 
 const state = {
 	todo: '',
-	todos: Store.fetch()
+	todos: Store.fetch(),
+	remain: 0
 }
 
 const mutations = {
+	BINDINGNEWTODO(state,todo){
+		state.todo = todo;
+	},
 	ADDTODO(state,txt){
-			console.log(txt)
 		if(txt.trim()){
 			state.todos.push({
 				todoText: txt,
 				completed: false
 			});
 			state.todo = '';
+			Store.save(state.todos);
 		}
 	},
-	UPDATETODOS(state){
-
+	UPDATETODOS(state,todos){
+		state.todos = todos;
+		Store.save(state.todos);
+	},
+	REMOVETODO(state,todo){
+		state.todos.$remove(todo);
+		Store.save(state.todos);
+	},
+	SETREMAIN(state,remain){
+		state.remain = remain;
+	},
+	SETCOMPLETED(state,index,todo){
+		state.todos[index].completed = todo.completed;
+		Store.save(state.todos);
+	},
+	CLEARTODOS(state,todos){
+		state.todos = todos;
+		Store.save(state.todos);
 	}
 }
 
