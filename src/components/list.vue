@@ -100,8 +100,10 @@
 				if(!value){
 					return;
 				}
-				let el = this.el;
-				el.focus();
+				this.vm.$nextTick(() => {
+					let el = this.el;
+					el.focus();
+				});
 			}
 		}
 	}
